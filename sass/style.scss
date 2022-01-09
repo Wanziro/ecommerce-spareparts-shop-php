@@ -5802,7 +5802,7 @@ span.required {
   height: 400px;
   position: relative;
   .find-container {
-    background-position: 100% 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     filter: blur(8px);
     height: 100%;
@@ -5841,4 +5841,47 @@ span.required {
 }
 .transparent-bg {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.header-user-dropdown {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  i {
+    font-size: 2.7rem;
+    color: rgb(233, 233, 233);
+  }
+}
+.header-user-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+  z-index: 100;
+  text-align: left;
+  cursor: pointer;
+  p {
+    color: $primary;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin: 0px;
+    font-size: 1.5rem;
+  }
+  a {
+    display: block;
+    padding: 5px 10px;
+    &:last-child {
+      padding-bottom: 10px;
+    }
+  }
+}
+.header-user-dropdown:hover .header-user-dropdown-content {
+  display: block;
+}
+
+.product-image {
+  img {
+    height: 200px;
+  }
 }

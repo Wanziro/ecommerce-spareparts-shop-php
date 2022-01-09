@@ -1,46 +1,16 @@
 <?php
 include"connect.php";
 include"fxs.php";
-function getUserIpAddr(){
-    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
-        //ip from share internet
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
-        //ip pass from proxy
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    }else{
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
-}
+
+
 function unmodify_all_products_in_cart(){
     include"connect.php";
-    $sql = "UPDATE cart set modified='NO' where ip_address='".getUserIpAddr()."'";
-    $statement = $conn->query($sql);
-}
-function get_spare_part_price($product_id){
-    include"connect.php";
-    $sql = "SELECT * FROM spare_parts where id='$product_id'";
-    $statement = $conn->query($sql);
-    $amount = 0;
-    if($statement->rowCount() > 0){
-        while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
-            $amount = $row['price'];
-        }
+    if(isset($_SESSION['username'])){
+        $sql = "UPDATE cart set modified='NO' where username='".$_SESSION['username']."'";
+    }else{
+        $sql = "UPDATE cart set modified='NO' where ip_address='".getUserIpAddr()."'";
     }
-    return $amount;
-}
-function get_spare_part_name($product_id){
-    include"connect.php";
-    $sql = "SELECT * FROM spare_parts where id='$product_id'";
     $statement = $conn->query($sql);
-    $result = '';
-    if($statement->rowCount() > 0){
-        while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
-            $result = $row['name'];
-        }
-    }
-    return $result;
 }
 
 function get_spare_part_category($product_id){
@@ -82,7 +52,11 @@ function get_spare_part_image($product_id){
 }
 function check_if_item_exists($product_id){
     include"connect.php";
-    $sql = "SELECT * FROM cart WHERE product_id='$product_id' AND ip_address='".getUserIpAddr()."'";
+    if(isset($_SESSION['username'])){
+        $sql = "SELECT * FROM cart WHERE product_id='$product_id' AND username='".$_SESSION['username']."'";
+    }else{
+        $sql = "SELECT * FROM cart WHERE product_id='$product_id' AND ip_address='".getUserIpAddr()."'";
+    }
     $statement = $conn->query($sql);
     if($statement->rowCount() > 0){
         return true;
@@ -96,8 +70,13 @@ if(isset($_POST['addToCart'])){
     $itemNumber = $_POST['itemNumber'];
     if(!empty($product_id) && !empty($itemNumber)){
         if(!check_if_item_exists($product_id)){
-            $sql = "INSERT INTO cart ( product_id, item_number,ip_address) 
-            VALUES ('$product_id', '$itemNumber','".getUserIpAddr()."')";
+            if(isset($_SESSION['username'])){
+                $sql = "INSERT INTO cart ( product_id, item_number,username) 
+                VALUES ('$product_id', '$itemNumber','".$_SESSION['username']."')";
+            }else{
+                $sql = "INSERT INTO cart ( product_id, item_number,ip_address) 
+                VALUES ('$product_id', '$itemNumber','".getUserIpAddr()."')";
+            }
             $statement = $conn->query($sql);
             if($statement->rowCount() > 0){
                 echo"<i class='fa fa-check-circle'></i>&nbsp;Item added to cart";
@@ -111,7 +90,11 @@ if(isset($_POST['addToCart'])){
 
 }
 if(isset($_POST['getMiniCart'])){
-    $sql = "SELECT * FROM cart where ip_address='".getUserIpAddr()."' ORDER BY id DESC LIMIT 4";
+    if(isset($_SESSION['username'])){
+        $sql = "SELECT * FROM cart where username='".$_SESSION['username']."' ORDER BY id DESC LIMIT 4";
+    }else{
+        $sql = "SELECT * FROM cart where ip_address='".getUserIpAddr()."' ORDER BY id DESC LIMIT 4";
+    }
     $statement = $conn->query($sql);
     if($statement->rowCount() > 0){
         echo'<ul class="minicart-product-list">';
@@ -148,6 +131,72 @@ if(isset($_POST['getMiniCart'])){
     }
 }
 
+if(isset($_POST['getCheckoutList'])){
+    if(isset($_SESSION['username'])){
+        $sqlx = "SELECT * FROM cart where username='".$_SESSION['username']."' ORDER BY id DESC LIMIT 4";
+    }else{
+        $sqlx = "SELECT * FROM cart where ip_address='".getUserIpAddr()."' ORDER BY id DESC LIMIT 4";
+    }
+    $statementx = $conn->query($sqlx);
+    $total = 0;
+    if($statementx->rowCount() > 0){
+        ?>
+        <table class="table">
+        <thead>
+            <tr>
+            <th class="cart-product-name">Product</th>
+            <th class="cart-product-total">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        while (($row = $statementx->fetch(PDO::FETCH_ASSOC)) !== false) {
+            $product_id = $row['product_id'];
+            $item_number = $row['item_number'];
+            $id = $row['id'];
+            $total += $item_number * get_spare_part_price($product_id);
+            ?>
+            <tr class="cart_item">
+                <td class="cart-product-name">
+                    <?php echo get_spare_part_name($product_id);?><strong class="product-quantity">
+                    × <?php echo $item_number;?></strong
+                    >
+                </td>
+                <td class="cart-product-total">
+                    <span class="amount"><?php echo get_spare_part_price($product_id);?></span>
+                </td>
+            </tr>
+            <?php
+        }
+        ?>
+        </tbody>
+        <tfoot>
+            <tr class="order-total">
+            <th>Total Price</th>
+            <td>
+                <strong><span class="amount"><?php echo numfmt_format_currency($fmt, $total, "RWF");?></span></strong>
+            </td>
+            </tr>
+            <tr class="order-total">
+            <th>Delivery Fee</th>
+            <td>
+                <strong><span class="amount" id="deliveryString"></span></strong>
+            </td>
+            </tr>
+            <tr class="order-total">
+            <th>Order Total</th>
+            <td>
+                <strong><span class="amount" id="amountString"><?php echo numfmt_format_currency($fmt, $total, "RWF");?></span></strong>
+                <input type="hidden" id="currentPrice" value="<?php echo $total;?>">
+                <input type="hidden" id="totalAmountToPay" value="<?php echo $total;?>">
+            </td>
+            </tr>
+        </tfoot>
+        </table>
+        <?php
+    }
+}
+
 if(isset($_POST['deleteItem'])){
     $id = $_POST['id'];
     $sql = "DELETE FROM cart where id='$id'";
@@ -156,7 +205,11 @@ if(isset($_POST['deleteItem'])){
 }
 
 if(isset($_POST['miniCartNotifications'])){
-    $sql = "SELECT * FROM cart where ip_address='".getUserIpAddr()."'";
+    if(isset($_SESSION['username'])){
+        $sql = "SELECT * FROM cart where username='".$_SESSION['username']."'";
+    }else{
+        $sql = "SELECT * FROM cart where ip_address='".getUserIpAddr()."'";
+    }
     $statement = $conn->query($sql);
     $totalItmes = $statement->rowCount();
     $total = '0.000 RWF';
@@ -179,7 +232,11 @@ if(isset($_POST['miniCartNotifications'])){
 
 if(isset($_POST['cartOnPage'])){
     unmodify_all_products_in_cart();
-    $sql = "SELECT * FROM cart where ip_address='".getUserIpAddr()."' ORDER BY id DESC LIMIT 4";
+    if(isset($_SESSION['username'])){
+        $sql = "SELECT * FROM cart where username='".$_SESSION['username']."' ORDER BY id DESC LIMIT 4";
+    }else{
+        $sql = "SELECT * FROM cart where ip_address='".getUserIpAddr()."' ORDER BY id DESC LIMIT 4";
+    }
     $statement = $conn->query($sql);
     if($statement->rowCount() > 0){
         $total = 0;
@@ -260,7 +317,7 @@ if(isset($_POST['cartOnPage'])){
             <li>Subtotal <span><?php echo numfmt_format_currency($fmt, $total, "RWF");?></span></li>
             <li>Total <span><?php echo numfmt_format_currency($fmt, $total, "RWF");?></span></li>
             </ul>
-            <a href="#">Proceed to checkout</a>
+            <a href="checkout.php">Proceed to checkout</a>
             </div>
             </div>
         </div>
@@ -273,14 +330,22 @@ if(isset($_POST['cartOnPage'])){
 if(isset($_POST['updateCartDetails'])){
     $id = $_POST['id'];
     $itemNumber = $_POST['itemNumber'];
-    $sql = "UPDATE cart set item_number='$itemNumber', modified='YES' where id='$id' AND ip_address='".getUserIpAddr()."'";
+    if(isset($_SESSION['username'])){
+        $sql = "UPDATE cart set item_number='$itemNumber', modified='YES' where id='$id' AND username='".$_SESSION['username']."'";
+    }else{
+        $sql = "UPDATE cart set item_number='$itemNumber', modified='YES' where id='$id' AND ip_address='".getUserIpAddr()."'";
+    }
     $statement = $conn->query($sql);
     echo"Done";
 }
 
 if(isset($_POST['seeTheChanges'])){
     $id = $_POST['id'];
-    $sql = "SELECT * FROM cart where ip_address='".getUserIpAddr()."' AND id='$id'";
+    if(isset($_SESSION['username'])){
+        $sql = "SELECT * FROM cart where username='".$_SESSION['username']."' AND id='$id'";
+    }else{
+        $sql = "SELECT * FROM cart where ip_address='".getUserIpAddr()."' AND id='$id'";
+    }
     $statement = $conn->query($sql);
     if($statement->rowCount() == 1){
         while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
@@ -374,8 +439,12 @@ if(isset($_POST['getVehicleSpCat'])){
         echo '<option value="" selected disabled>Choose Part Category</option>';
         while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
             $name = $row['name']; 
-            if(check_if_spare_part_category_has_values($name))
-            echo"<option value='$name'>$name</option>";
+            if(isset($_POST['admin'])){
+                echo"<option value='$name'>$name</option>";
+            }else{
+                if(check_if_spare_part_category_has_values($name))
+                echo"<option value='$name'>$name</option>";
+            }
         }
     }else{
         echo '<option value="" selected disabled>No Data Found</option>';
@@ -429,6 +498,38 @@ if(isset($_POST['search'])){
         echo"</ul>";
     }else{
         echo"";
+    }
+}
+
+
+if(isset($_POST['saveInvoice'])){
+    $amount = $_POST['amount'];
+    $transaction_id = $_POST['tx_id'];
+    $transaction_ref = $_POST['tx_ref'];
+    if(isset($_SESSION['username'])){
+        $sql1 = "UPDATE invoices SET status='Old' WHERE username='".$_SESSION['username']."'";
+        $statement1 = $conn->query($sql1); 
+
+        $sql = "INSERT INTO invoices(username,amount,tx_id,tx_ref)
+        VALUES('".$_SESSION['username']."','$amount','$transaction_id','$transaction_ref')";
+        $statement = $conn->query($sql); 
+    }
+}
+
+if(isset($_POST['saveShippingInfo'])){
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $tx_id = $_POST['tx_id'];
+    $province = $_POST['province'];
+    $phone = $_POST['phone'];
+
+    if(isset($_SESSION['username'])){
+        $sql = "INSERT INTO shipping_info(fname,lname,email,address,phone,province,username,transaction_id)
+        VALUES('$fname','$lname','$email','$address','$phone','$province','".$_SESSION['username']."','$tx_id')";
+        $statement = $conn->query($sql);
+        echo"success"; 
     }
 }
 ?>

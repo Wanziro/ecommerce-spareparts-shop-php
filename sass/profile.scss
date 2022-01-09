@@ -1,0 +1,155 @@
+@import "./config";
+
+body {
+  color: #242424;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  overflow-x: hidden;
+  background-color: #f2f2f2;
+}
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.user-sidebar {
+  background-color: $primary;
+  color: rgb(224, 224, 224);
+  .list-group-item-action {
+    background: transparent;
+    color: white;
+    &:hover {
+      color: $primary2;
+      background-color: $light;
+    }
+  }
+  .active {
+    color: $primary2;
+    background-color: $light;
+    border: none;
+  }
+  .sidebar-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.nav-header {
+  background-color: $light;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: white;
+  .btn-toggle {
+    background-color: $primary;
+    border: none;
+  }
+  a {
+    color: white;
+    font-size: 16px;
+    &:hover {
+      color: $primary2;
+    }
+  }
+}
+
+.contents {
+  margin-top: 2rem;
+  .card {
+    background-color: $primary;
+    border-radius: 15px;
+    padding: 2rem;
+    columns: #f2f2f2;
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    h2 {
+      color: #f2f2f2;
+      text-decoration: underline;
+    }
+    form {
+      input {
+        display: block;
+        width: 100%;
+        padding: 10px 0px;
+        outline: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $light;
+      }
+      .disabled {
+        background-color: $light;
+        color: #ccc;
+        padding: 5px 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+      }
+      button {
+        background-color: $light;
+        color: $primary;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 15px;
+        font-weight: 600;
+      }
+    }
+    .card-span {
+      color: $light2;
+      font-size: 1rem;
+    }
+    .centered {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+
+      h2 {
+        text-decoration: none;
+      }
+    }
+  }
+}

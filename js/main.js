@@ -864,6 +864,10 @@ const searchParts = (vehicle, vehicleMark, vehicleModel) => {
   }
 };
 $(document).ready(() => {
+  if (document.getElementById("videoBanner")) {
+    document.getElementById("videoBanner").play();
+    document.getElementById("videoBanner").playbackRate = 0.5;
+  }
   setInterval(() => {
     getMiniCartToastNotifications();
     !deleting ? getMiniCart() : "";
