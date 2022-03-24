@@ -1,6 +1,6 @@
 <?php
-include"admin_protect.php";
-include"fxs.php";
+include "admin_protect.php";
+include "fxs.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@ include"fxs.php";
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>eCommerce Project</title>
+  <title>Auto experts Rwanda</title>
 
   <!-- <link rel="stylesheet" href="../css/font-awesome.min.css" /> -->
   <link href="../css/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@ include"fxs.php";
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <?php include"sidebar.php";?>
+    <?php include "sidebar.php"; ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -35,7 +35,7 @@ include"fxs.php";
       <!-- Main Content -->
       <div id="content">
 
-        <?php include"header.php";?>
+        <?php include "header.php"; ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -55,7 +55,7 @@ include"fxs.php";
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">total items in stock</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php get_number_of_spare_parts();?></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php get_number_of_spare_parts(); ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fa fa-calendar fa-2x text-gray-300"></i>
@@ -72,7 +72,7 @@ include"fxs.php";
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">stock amount</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php get_total_stock();?></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php get_total_stock(); ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fa fa-dollar-sign fa-2x text-gray-300"></i>
@@ -90,7 +90,7 @@ include"fxs.php";
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Amount of sold products</div>
                       <div class="row no-gutters align-items-center">
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php get_total_sold_amount();?></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php get_total_sold_amount(); ?></div>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -108,7 +108,7 @@ include"fxs.php";
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Sub Items in users cart</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php get_number_of_items_in_cart();?></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php get_number_of_items_in_cart(); ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fa fa-comments fa-2x text-gray-300"></i>
@@ -127,7 +127,7 @@ include"fxs.php";
             get_invoices();
             get_latest_products();
             get_users();
-            ?>  
+            ?>
           </div>
 
         </div>
@@ -147,7 +147,7 @@ include"fxs.php";
   </a>
 
   <script src="../js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
 
   <script src="../js/jquery.easing.min.js"></script>
   <script src="../js/admin.js"></script>

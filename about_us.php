@@ -6,145 +6,127 @@ include "fxs.php";
 <html class="no-js">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>eCommerce Project</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="stylesheet" href="css/material-design-iconic-font.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/fontawesome-stars.css" />
-    <link rel="stylesheet" href="css/meanmenu.css" />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/slick.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-    <link rel="stylesheet" href="css/jquery-ui.min.css" />
-    <link rel="stylesheet" href="css/venobox.css" />
-    <link rel="stylesheet" href="css/nice-select.css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/helper.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <?php include "main_header.php"; ?>
 </head>
 
 <body>
     <div class="body-wrapper">
         <?php include "./header.php"; ?>
-        <div class="about-us-wrapper pt-60 pb-40">
-            <div class="container">
-                <div class="row">
-                    <!-- About Text Start -->
-                    <div class="col-lg-6 order-last order-lg-first">
-                        <div class="about-text-wrap">
-                            <h2>About kas online ltd</h2>
-                            <p>We provide the best Beard oile all over the world. We are the worldd best store in indi for Beard Oil. You can buy our product without any hegitation because they truste us and buy our product without any hagitation because they belive and always happy buy our product.</p>
-                            <p>Some of our customer say’s that they trust us and buy our product without any hagitation because they belive us and always happy to buy our product.</p>
-                            <p>We provide the beshat they trusted us and buy our product without any hagitation because they belive us and always happy to buy.</p>
+        <div class="body-contents-wrapper">
+            <div class="about-us-wrapper pt-60 pb-40">
+                <div class="container">
+                    <div class="row">
+                        <!-- About Text Start -->
+                        <div class="col-lg-6 order-last order-lg-first">
+                            <div class="about-text-wrap">
+                                <h2>AUTO Experts Rwanda</h2>
+                                <p>AUTO Experts Rwanda is a leading East Africa’s Automotive based service provider based in Kigali Rwanda. The company provide services and products to customer level in order to satisfy growing automotive industry in Rwanda and Africa.</p>
+                                <h3>Our purpose</h3>
+                                <p>We are optimistic for a future where people can find one stop to solve all the necessities of their cars by just few clicks which can save time and increase flexibility. All this can be achieved by providing the best service and quality products to our customers.</p>
+                                <p>The best tech team and cooperation help us to provide the best services and satisfaction to our customers and that keeps us inspired about what we do.</p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- About Text End -->
-                    <!-- About Image Start -->
-                    <div class="col-lg-5 col-md-10">
-                        <div class="about-image-wrap">
-                            <img class="img-full" src="images/product/large-size/13.jpg" alt="About Us" />
+                        <!-- About Text End -->
+                        <!-- About Image Start -->
+                        <div class="col-lg-5 col-md-10">
+                            <div class="about-image-wrap">
+                                <img class="img-full" src="logo/logo1.jpg" alt="AUTO Experts Rwanda" />
+                            </div>
                         </div>
+                        <!-- About Image End -->
                     </div>
-                    <!-- About Image End -->
                 </div>
             </div>
-        </div>
-        <!-- about wrapper end -->
-        <!-- Begin Counterup Area -->
-        <div class="counterup-area">
-            <div class="container-fluid p-0">
-                <div class="row no-gutters">
-                    <div class="col-lg-4 col-md-6">
-                        <!-- Begin Limupa Counter Area -->
-                        <div class="limupa-counter white-smoke-bg">
-                            <div class="container">
+            <!-- about wrapper end -->
+            <!-- Begin Counterup Area -->
+            <div class="counterup-area">
+                <div class="container-fluid p-0">
+                    <div class="row no-gutters">
+                        <div class="col-lg-4 col-md-6">
+                            <!-- Begin Limupa Counter Area -->
+                            <div class="limupa-counter white-smoke-bg">
+                                <div class="container">
+                                    <div class="counter-img">
+                                        <i class="fa fa-users" style="font-size:2rem"></i>
+                                    </div>
+                                    <div class="counter-info">
+                                        <div class="counter-number">
+                                            <h3 class="counter">2169</h3>
+                                        </div>
+                                        <div class="counter-text">
+                                            <span>HAPPY CUSTOMERS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <!-- Begin limupa Counter Area -->
+                            <div class="limupa-counter gray-bg">
                                 <div class="counter-img">
-                                    <i class="fa fa-users" style="font-size:2rem"></i>
+                                    <i class="fa fa-first-order" style="font-size:2rem"></i>
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-number">
+                                        <h3 class="counter">102</h3>
+                                    </div>
+                                    <div class="counter-text">
+                                        <span>ORDERS</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <!-- Begin limupa Counter Area -->
+                            <div class="limupa-counter white-smoke-bg">
+                                <div class="counter-img">
+                                    <!-- <img src="images/about-us/icon/4.png" alt=""> -->
+                                    <i class="fa fa-rocket" style="font-size:2rem"></i>
                                 </div>
                                 <div class="counter-info">
                                     <div class="counter-number">
                                         <h3 class="counter">2169</h3>
                                     </div>
                                     <div class="counter-text">
-                                        <span>HAPPY CUSTOMERS</span>
+                                        <span>COMPLETED ORDERS</span>
                                     </div>
                                 </div>
                             </div>
+                            <!-- limupa Counter Area End Here -->
                         </div>
-                        <!-- limupa Counter Area End Here -->
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!-- Begin limupa Counter Area -->
-                        <div class="limupa-counter gray-bg">
-                            <div class="counter-img">
-                                <i class="fa fa-first-order" style="font-size:2rem"></i>
-                            </div>
-                            <div class="counter-info">
-                                <div class="counter-number">
-                                    <h3 class="counter">102</h3>
-                                </div>
-                                <div class="counter-text">
-                                    <span>ORDERS</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- limupa Counter Area End Here -->
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!-- Begin limupa Counter Area -->
-                        <div class="limupa-counter white-smoke-bg">
-                            <div class="counter-img">
-                                <!-- <img src="images/about-us/icon/4.png" alt=""> -->
-                                <i class="fa fa-rocket" style="font-size:2rem"></i>
-                            </div>
-                            <div class="counter-info">
-                                <div class="counter-number">
-                                    <h3 class="counter">2169</h3>
-                                </div>
-                                <div class="counter-text">
-                                    <span>COMPLETED OEDERS</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- limupa Counter Area End Here -->
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Counterup Area End Here -->
-        <!-- team area wrapper start -->
-        <div class="team-area pt-60 pt-sm-44 mb-30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 mb-20">
-                        <div class="card" style="height:100%">
-                            <div class="card-body text-center">
-                                <h2>The Latest & Greatest</h2>
-                                We keep our product catalog up to date with the newest product releases so you can have the latest and greatest technologies at your fingertips.
+            <!-- Counterup Area End Here -->
+            <!-- team area wrapper start -->
+            <div class="team-area pt-60 pt-sm-44 mb-30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mb-20">
+                            <div class="card shadow" style="height:100%">
+                                <div class="card-body text-center">
+                                    <h2>The Latest & Greatest</h2>
+                                    We keep our product catalog up to date with the newest product releases so you can have the latest and greatest technologies at your fingertips.
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 mb-20">
-                        <div class="card" style="height:100%">
-                            <div class="card-body text-center">
-                                <h2>Secure Payments</h2>
-                                As a leading retailer, We ensures your peace of mind with our employment of advanced security technologies. We use the most secure payment gateways and make sure your purchases are safe.
+                        <div class="col-md-4 mb-20">
+                            <div class="card shadow" style="height:100%">
+                                <div class="card-body text-center">
+                                    <h2>Secure Payments</h2>
+                                    As a leading retailer, We ensures your peace of mind with our employment of advanced security technologies. We use the most secure payment gateways and make sure your purchases are safe.
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 mb-20">
-                        <div class="card" style="height:100%">
-                            <div class="card-body text-center">
-                                <h2>Fast Delivery</h2>
-                                We strive to deliver your products as fast as possible. Products that require installation may take longer to deliver.
-                                <!-- Orders below 20 KD are subject to a delivery fee of 2 KD. Visit our *Terms & Conditions for more information. -->
+                        <div class="col-md-4 mb-20">
+                            <div class="card shadow" style="height:100%">
+                                <div class="card-body text-center">
+                                    <h2>Fast Delivery</h2>
+                                    We strive to deliver your products as fast as possible. Products that require installation may take longer to deliver.
+                                    <!-- Orders below 20 KD are subject to a delivery fee of 2 KD. Visit our *Terms & Conditions for more information. -->
+                                </div>
                             </div>
                         </div>
                     </div>

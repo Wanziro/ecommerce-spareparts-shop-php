@@ -36,9 +36,23 @@ let keyWord = $("#keyWord");
 /*----------------------------------------*/
   $(window).on("scroll", function () {
     if ($(this).scrollTop() > 300) {
-      $(".header-sticky").addClass("sticky");
+      $(".header-dynamic").removeClass("header-middle2");
+      $(".header-dynamic").addClass("header-middle22");
+      $(".header-main-container2 .header-dynamic-bottom").removeClass(
+        "header-bottom"
+      );
+      $(".header-main-container2 .header-dynamic-bottom").addClass(
+        "header-bottom22"
+      );
     } else {
-      $(".header-sticky").removeClass("sticky");
+      $(".header-dynamic").removeClass("header-middle22");
+      $(".header-dynamic").addClass("header-middle2");
+      $(".header-main-container2 .header-dynamic-bottom").removeClass(
+        "header-bottom22"
+      );
+      $(".header-main-container2 .header-dynamic-bottom").addClass(
+        "header-bottom"
+      );
     }
   });
   /*----------------------------------------*/
@@ -558,6 +572,7 @@ const handleMinus = (id) => {
   itemNumber -= 1;
   itemNumber > 0 ? $("#itemNumberFor" + id).text(itemNumber) : 1;
 };
+
 const addToCart = (btn, id) => {
   let itemNumber = document.getElementById("itemNumberFor" + id)
     ? giveMeNumber($("#itemNumberFor" + id).text())
@@ -574,6 +589,7 @@ const addToCart = (btn, id) => {
       method: "POST",
       data: { addToCart: 1, id, itemNumber },
       success: (data) => {
+        loadBasics();
         setTimeout(() => {
           btn.innerHTML = data;
           btn.classList.add("clicked");
@@ -863,15 +879,16 @@ const searchParts = (vehicle, vehicleMark, vehicleModel) => {
     window.location = `searchparts.php?vehicle=${vehicle}&mark=${vehicleMark}&model=${vehicleModel}&fuel=${vehicleFuel}&engine=${engine}&category=${category}`;
   }
 };
+const loadBasics = () => {
+  getMiniCartToastNotifications();
+  !deleting ? getMiniCart() : "";
+};
 $(document).ready(() => {
   if (document.getElementById("videoBanner")) {
     document.getElementById("videoBanner").play();
     document.getElementById("videoBanner").playbackRate = 0.5;
   }
-  setInterval(() => {
-    getMiniCartToastNotifications();
-    !deleting ? getMiniCart() : "";
-  }, 1000);
+  loadBasics();
   $("#cartPage") ? getCartOnPage() : "";
 
   startHereVehicle.change(() => {
@@ -936,6 +953,7 @@ $(document).ready(() => {
         vehicleFuel: startHereFuel.val(),
         engine: startHereEngineType.val(),
         category: startHereCategory.val(),
+        filter: $("#startHereFilter").val(),
       },
       success: (data) => {
         setTimeout(() => {
@@ -949,6 +967,36 @@ $(document).ready(() => {
   });
   keyWord.keyup(handleSearch);
 });
+
+function removeParameter(key) {
+  var sourceURL = window.location.href;
+  var rtn = sourceURL.split("?")[0],
+    param,
+    params_arr = [],
+    queryString = sourceURL.indexOf("?") !== -1 ? sourceURL.split("?")[1] : "";
+  if (queryString !== "") {
+    params_arr = queryString.split("&");
+    for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+      param = params_arr[i].split("=")[0];
+      if (param === key) {
+        params_arr.splice(i, 1);
+      }
+    }
+    if (params_arr.length) rtn = rtn + "?" + params_arr.join("&");
+  }
+  return rtn;
+}
+
+function handleFiltering(box) {
+  let url = removeParameter("filter");
+  let newUrl = url + "&filter=" + box.value;
+  window.location = newUrl;
+}
+function handleFiltering2(box) {
+  // let url = removeParameter("filter");
+  let newUrl = "car_renting.php" + "?sort=" + box.value;
+  window.location = newUrl;
+}
 
 window.onclick = function (event) {
   document.getElementById("keyWord")

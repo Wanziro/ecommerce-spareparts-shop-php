@@ -1,8 +1,22 @@
 <?php
-function get_start_here_spare_parts($vehicle, $vehicleMark, $vehicleModel, $vehicleFuel, $engine, $category)
+function get_start_here_spare_parts($vehicle, $vehicleMark, $vehicleModel, $vehicleFuel, $engine, $category, $filter)
 {
     include "connect.php";
-    $sql = "SELECT DISTINCT * FROM spare_parts WHERE spare_part_category='$category' AND vehicle_category='$vehicle' AND vehicle_mark='$vehicleMark' AND vehicle_model='$vehicleModel' AND fuel='$vehicleFuel' AND engine='$engine' ORDER BY id DESC";
+    if ($filter == 'name-az') {
+        $sql = "SELECT DISTINCT * FROM spare_parts WHERE spare_part_category='$category' AND vehicle_category='$vehicle' AND vehicle_mark='$vehicleMark' AND vehicle_model='$vehicleModel' AND fuel='$vehicleFuel' AND engine='$engine' ORDER BY name ASC";
+    } else if ($filter == 'name-za') {
+        $sql = "SELECT DISTINCT * FROM spare_parts WHERE spare_part_category='$category' AND vehicle_category='$vehicle' AND vehicle_mark='$vehicleMark' AND vehicle_model='$vehicleModel' AND fuel='$vehicleFuel' AND engine='$engine' ORDER BY name DESC";
+    } else if ($filter == 'price-lh') {
+        $sql = "SELECT DISTINCT * FROM spare_parts WHERE spare_part_category='$category' AND vehicle_category='$vehicle' AND vehicle_mark='$vehicleMark' AND vehicle_model='$vehicleModel' AND fuel='$vehicleFuel' AND engine='$engine' ORDER BY price ASC";
+    } else if ($filter == 'price-hl') {
+        $sql = "SELECT DISTINCT * FROM spare_parts WHERE spare_part_category='$category' AND vehicle_category='$vehicle' AND vehicle_mark='$vehicleMark' AND vehicle_model='$vehicleModel' AND fuel='$vehicleFuel' AND engine='$engine' ORDER BY price DESC";
+    } else if ($filter == 'ratings-l') {
+        $sql = "SELECT DISTINCT * FROM spare_parts WHERE spare_part_category='$category' AND vehicle_category='$vehicle' AND vehicle_mark='$vehicleMark' AND vehicle_model='$vehicleModel' AND fuel='$vehicleFuel' AND engine='$engine' ORDER BY ratings ASC";
+    } else if ($filter == 'ratings-h') {
+        $sql = "SELECT DISTINCT * FROM spare_parts WHERE spare_part_category='$category' AND vehicle_category='$vehicle' AND vehicle_mark='$vehicleMark' AND vehicle_model='$vehicleModel' AND fuel='$vehicleFuel' AND engine='$engine' ORDER BY ratings DESC";
+    } else {
+        $sql = "SELECT DISTINCT * FROM spare_parts WHERE spare_part_category='$category' AND vehicle_category='$vehicle' AND vehicle_mark='$vehicleMark' AND vehicle_model='$vehicleModel' AND fuel='$vehicleFuel' AND engine='$engine' ORDER BY name DESC";
+    }
     $statement = $conn->query($sql);
     if ($statement->rowCount() > 0) {
 ?>
@@ -307,10 +321,10 @@ function get_side_bar_car_categories()
                 while ($r = mysqli_fetch_assoc($q)) {
                     $name = $r['name'];
                     $img = $r['image'];
-                ?><li><a href="spare_parts_from_category.php?category=<?php echo $name; ?>">
+                ?><li><a href="spare_part_from_category.php?category=<?php echo $name; ?>">
                             <table>
                                 <tr>
-                                    <td><img src="images/uploads/<?php echo $img ?>" alt="<?php echo $name ?>" width="30" height="30"></td>
+                                    <td><img src="images/uploads/<?php echo $img ?>" alt="<?php echo $name ?>" width="40" height="40"></td>
                                     <td>&nbsp;</td>
                                     <td><?php echo $name ?> (<?php echo count_spare_parts_by_category($name); ?>)</td>
                                 </tr>
@@ -337,10 +351,10 @@ function get_side_bar_truck_categories()
                 while ($r = mysqli_fetch_assoc($q)) {
                     $name = $r['name'];
                     $img = $r['image'];
-                ?><li><a href="spare_parts_from_category.php?category=<?php echo $name; ?>">
+                ?><li><a href="spare_part_from_category.php?category=<?php echo $name; ?>">
                             <table>
                                 <tr>
-                                    <td><img src="images/uploads/<?php echo $img ?>" alt="<?php echo $name ?>" width="30" height="30"></td>
+                                    <td><img src="images/uploads/<?php echo $img ?>" alt="<?php echo $name ?>" width="40" height="40"></td>
                                     <td>&nbsp;</td>
                                     <td><?php echo $name ?> (<?php echo count_spare_parts_by_category($name); ?>)</td>
                                 </tr>
@@ -367,10 +381,10 @@ function get_side_bar_motocycles_categories()
                 while ($r = mysqli_fetch_assoc($q)) {
                     $name = $r['name'];
                     $img = $r['image'];
-                ?><li><a href="spare_parts_from_category.php?category=<?php echo $name; ?>">
+                ?><li><a href="spare_part_from_category.php?category=<?php echo $name; ?>">
                             <table>
                                 <tr>
-                                    <td><img src="images/uploads/<?php echo $img ?>" alt="<?php echo $name ?>" width="30" height="30"></td>
+                                    <td><img src="images/uploads/<?php echo $img ?>" alt="<?php echo $name ?>" width="40" height="40"></td>
                                     <td>&nbsp;</td>
                                     <td><?php echo $name ?> (<?php echo count_spare_parts_by_category($name); ?>)</td>
                                 </tr>
@@ -420,10 +434,10 @@ function vehicle_trendings($vehicle)
                             ?>
 
                                 <div class="col-lg-12">
-                                    <div class="single-product-wrap">
+                                    <div class="single-product-wrap" style="box-shadow: 0 0 10px 0 rgb(0 0 0 / 15%);padding:15px 10px">
                                         <div class="product-image">
                                             <a href="./spare_part_from_category.php?category=<?php echo "$category"; ?>&item=<?php echo "$name"; ?>&s_id=<?php echo $product_id; ?>">
-                                                <img src="./images/uploads/<?php echo "$img"; ?>" alt="<?php echo $name ?>">
+                                                <img src="./images/uploads/<?php echo "$img"; ?>" alt="<?php echo $name ?>" class="trending-img">
                                             </a>
                                             <span class="sticker">New</span>
                                         </div>
@@ -435,8 +449,7 @@ function vehicle_trendings($vehicle)
                                                     </h5>
                                                     <div class="rating-box">
                                                         <ul class="rating">
-                                                            <li>
-                                                                <i><?php echo $part_number; ?></i>
+                                                            <li><i><?php echo $part_number; ?></i>
                                                         </ul>
                                                     </div>
                                                 </div>

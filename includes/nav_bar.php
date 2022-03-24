@@ -22,7 +22,7 @@ function get_models($name, $vehicle_category)
   }
 }
 ?>
-<div class="header-bottom d-none d-lg-block d-xl-block">
+<div class="header-dynamic-bottom header-bottom d-none d-lg-block d-xl-block">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -87,35 +87,10 @@ function get_models($name, $vehicle_category)
                 }
                 ?>
               </li>
-              <li class="dropdown-holder">
-                <a href="#"><i class="fa fa-motorcycle"></i>&nbsp;Moto Bike
-                  Parts</a>
-                <?php
-                //get car marks and model
-                $sql = 'SELECT * FROM vehicle_marks where vehicle_category="Motocycles"';
-                $statement = $conn->query($sql);
-
-                if ($statement->rowCount() > 0) {
-                ?>
-                  <ul class="hb-dropdown">
-                    <?php
-                    while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
-                      $name = $row['name'];
-                    ?>
-                      <li class="sub-dropdown-holder">
-                        <a href="#"><?php echo "$name"; ?></a>
-                      <?php
-                      //get models
-                      get_models($name, 'Motocycles');
-                      echo "</li>";
-                    }
-                      ?>
-                  </ul>
-                <?php
-                }
-                ?>
-              </li>
               <li class="no-content pl-30">
+                <a href="car_renting.php">CAR renting</a>
+              </li>
+              <li class="no-content">
                 <a href="about_us.php">About us</a>
               </li>
               <li class="no-content">

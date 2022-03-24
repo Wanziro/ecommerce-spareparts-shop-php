@@ -245,48 +245,28 @@ function get_spare_parts($category, $word)
 <html class="no-js">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>eCommerce Project</title>
-  <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="stylesheet" href="css/material-design-iconic-font.min.css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <link rel="stylesheet" href="css/fontawesome-stars.css" />
-  <link rel="stylesheet" href="css/meanmenu.css" />
-  <link rel="stylesheet" href="css/owl.carousel.min.css" />
-  <link rel="stylesheet" href="css/slick.css" />
-  <link rel="stylesheet" href="css/animate.css" />
-  <link rel="stylesheet" href="css/jquery-ui.min.css" />
-  <link rel="stylesheet" href="css/venobox.css" />
-  <link rel="stylesheet" href="css/nice-select.css" />
-  <link rel="stylesheet" href="css/magnific-popup.css" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/helper.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
-  <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <?php include "main_header.php"; ?>
 </head>
 
 <body>
   <div class="body-wrapper">
     <?php include "./header.php"; ?>
     <!-- body -->
-    <?php if (isset($_GET['category']) && isset($_GET['q'])) {
-      $category = $_GET['category'];
-      $word = $_GET['q'];
-    ?>
-      <div class="product-area pt-10 pb-50">
-        <div class="container">
-          <div class="text-center dark-bg text-white py-2 mb-50">
-            <h2> Search results for <?php echo $word; ?></h2>
+    <div class="body-contents-wrapper3">
+      <?php if (isset($_GET['category']) && isset($_GET['q'])) {
+        $category = $_GET['category'];
+        $word = $_GET['q'];
+      ?>
+        <div class="product-area pt-10 pb-50">
+          <div class="container">
+            <div class="text-center dark-bg text-white py-2 mb-50">
+              <h2> Search results for <?php echo $word; ?></h2>
+            </div>
+            <?php get_spare_parts($category, $word); ?>
           </div>
-          <?php get_spare_parts($category, $word); ?>
         </div>
-      </div>
-    <?php } ?>
-
+      <?php } ?>
+    </div>
     <!-- body -->
     <?php include "footer.php"; ?>
   </div>

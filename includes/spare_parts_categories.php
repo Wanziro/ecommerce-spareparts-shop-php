@@ -22,14 +22,15 @@ $statement = $conn->query($sql);
 if ($statement->rowCount() > 0) {
 ?>
     <?php
+    $i = 0;
     while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
         $name = $row['name'];
         $image = $row['image'];
         if (check_if_spare_part_category_has_values($name)) {
     ?>
-            <div class="col-md-3 mb-3">
-                <div class="home-category-container">
-                    <a href="spare_parts_from_category.php?category=<?php echo $name; ?>">
+            <div class="col-md-3 mb-3  wow fadeInUp delay-<?php echo $i; ?>">
+                <div class="home-category-container" style="box-shadow: 0 0 10px 0 rgb(0 0 0 / 15%);padding-top:5px">
+                    <a href="spare_part_from_category.php?category=<?php echo $name; ?>">
                         <div class="img-container">
                             <!-- <img
                         src="images/uploads/<?php echo $image; ?>"
@@ -39,7 +40,7 @@ if ($statement->rowCount() > 0) {
                         /> -->
                             <div class="li-blog-gallery-slider slick-dot-style">
                                 <div class="li-blog-banner">
-                                    <img style="max-width:100%; height: 150px" class="ml-auto mr-auto d-block" src="images/uploads/<?php echo $image; ?>" alt="<?php echo $name; ?>">
+                                    <img class="ml-auto mr-auto d-block index-sparepart-img" src="images/uploads/<?php echo $image; ?>" alt="<?php echo $name; ?>">
                                 </div>
                                 <?php
                                 $q = mysqli_query($conn2, "select * from spare_parts where spare_part_category='$name' ORDER BY id DESC LIMIT 3");
@@ -49,7 +50,7 @@ if ($statement->rowCount() > 0) {
                                         $sp_name = $r['name'];
                                 ?>
                                         <div class="li-blog-banner">
-                                            <img style="max-width:100%; height: 100px" class="ml-auto mr-auto d-block" src="images/uploads/<?php echo $img; ?>" alt="<?php echo $sp_name; ?>">
+                                            <img class="ml-auto mr-auto d-block index-sparepart-img" src="images/uploads/<?php echo $img; ?>" alt="<?php echo $sp_name; ?>">
                                         </div>
                                 <?php
                                     }
@@ -65,6 +66,7 @@ if ($statement->rowCount() > 0) {
                 </div>
             </div>
 <?php
+            $i += 1000;
         }
     }
 }
