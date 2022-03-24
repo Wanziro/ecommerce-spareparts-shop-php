@@ -22,15 +22,17 @@ include "fxs.php";
                                 <div class="single-contact-block">
                                     <h4><i class="fa fa-fax"></i> Address</h4>
                                     <p>Kigali - Rwanda</p>
+                                    <p>KK 355 street</p>
                                 </div>
                                 <div class="single-contact-block">
                                     <h4><i class="fa fa-phone"></i> Phone</h4>
                                     <p>+250780848761</p>
+                                    <p>+250785569180</p>
                                 </div>
                                 <div class="single-contact-block last-child">
                                     <h4><i class="fa fa-envelope-o"></i> Email</h4>
                                     <p>auto.experts.rwanda@gmail.com</p>
-                                    <p>support@autoexpertsrwanda.com</p>
+                                    <p>info@autoexpertsrwanda.com</p>
                                 </div>
                                 <p>AUTO Experts Rwanda *ENGINEERED FOR BETTER EXPERIENCE*</p>
                             </div>

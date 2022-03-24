@@ -4,6 +4,12 @@ $username = "root";
 $password = "";
 $dbName = "ecommerce";
 
+//deployment
+// $servername = "localhost";
+// $username = "autoexpe_autoexpe";
+// $password = "security@2022!0";
+// $dbName = "autoexpe_main_db";
+
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,4 +24,3 @@ if(!$conn2){
   echo"Failed to connect to the server.";
   exit();
 }
-?>
