@@ -5879,6 +5879,99 @@ span.required {
   margin-top: 8rem;
 }
 
+.sm-header {
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10000000;
+  background: #34515e93;
+  padding: 15px;
+  transition: all 300ms ease-in 0s;
+  width: 100%;
+}
+.sm-header.sm-header2,
+.sm-header.bg {
+  background-color: #34515e;
+}
+.mbl-logo-container {
+  width: 100%;
+}
+.sm-header .main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.sm-header .main-container .cart-container {
+  position: relative;
+}
+.sm-header .main-container .cart-container .badge-container {
+  position: absolute;
+  top: -10px;
+  left: -5px;
+}
+.sm-header .main-container .cart-container .badge-container .total-counter {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  background-color: #ff8a50;
+  border-radius: 100%;
+  padding: 0 5px;
+  color: white;
+}
+
+.sm-header .sm-search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sm-header .sm-search-container .bars-container {
+  margin-left: 15px;
+}
+.sm-header .sm-search-container .bars-container i {
+  color: white;
+  font-size: 40px;
+}
+.sm-header .main-container .user-container {
+  margin-left: 15px;
+}
+.sm-header .main-container .user-container .user-circle {
+  background-color: #ff8a50;
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.sm-header .main-container i {
+  font-size: 25px;
+  color: white;
+}
+
+.sm-header .sm-menu-container {
+  margin-top: 15px;
+  transition: 0.5s;
+}
+.sm-header .sm-menu-container ul {
+  margin: 0;
+  padding: 0;
+}
+.sm-header .sm-menu-container ul li {
+  list-style: none;
+  margin: 10px 0px;
+  color: white;
+}
+.sm-header .sm-menu-container ul li div {
+  color: white;
+}
+
 @media (max-width: 768px) {
   .video-container {
     display: none;
@@ -5889,5 +5982,12 @@ span.required {
   .trending-img {
     width: 100% !important;
     height: auto !important;
+  }
+  .lg-header {
+    display: none;
+  }
+
+  .sm-header {
+    display: block;
   }
 }

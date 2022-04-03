@@ -6,6 +6,7 @@ let startHereModel = $("#startHereModel");
 let startHereFuel = $("#startHereFuel");
 let startHereCategory = $("#startHereCategory");
 let keyWord = $("#keyWord");
+let keyWord2 = $("#keyWord2");
 (function ($) {
   "use Strict";
   /*----------------------------------------*/
@@ -44,6 +45,7 @@ let keyWord = $("#keyWord");
       $(".header-main-container2 .header-dynamic-bottom").addClass(
         "header-bottom22"
       );
+      $(".sm-header").addClass("bg");
     } else {
       $(".header-dynamic").removeClass("header-middle22");
       $(".header-dynamic").addClass("header-middle2");
@@ -53,6 +55,7 @@ let keyWord = $("#keyWord");
       $(".header-main-container2 .header-dynamic-bottom").addClass(
         "header-bottom"
       );
+      $(".sm-header").removeClass("bg");
     }
   });
   /*----------------------------------------*/
@@ -623,6 +626,7 @@ const getMiniCartToastNotifications = () => {
         <span class="cart-item-count">${output[0]}</span>
       `);
       $("#miniCartTotal").text(output[1]);
+      $("#mobileCartTotal").html("<span>" + output[0] + "</span>");
     },
   });
 };
@@ -826,6 +830,27 @@ const handleSearch = () => {
     },
   });
 };
+
+const handleSearch2 = () => {
+  $.ajax({
+    url: "ajax.php",
+    method: "POST",
+    data: {
+      search: 1,
+      keyWord: keyWord2.val(),
+      searchCategory: "All",
+    },
+    success: (data) => {
+      if (data != "") {
+        $("#searchResult2").removeClass("d-none");
+        $("#searchResult2").html(data);
+      } else {
+        $("#searchResult2").addClass("d-none");
+      }
+    },
+  });
+};
+
 const getEngineTypes = (vehicle, vehicleMark, vehicleModel) => {
   document.getElementById("searchParts").setAttribute("disabled", "true");
   $.ajax({
@@ -966,7 +991,12 @@ $(document).ready(() => {
     });
   });
   keyWord.keyup(handleSearch);
+  keyWord2.keyup(handleSearch2);
 });
+
+function handleMobileMenu() {
+  $(".sm-menu-container").toggleClass("d-none");
+}
 
 function removeParameter(key) {
   var sourceURL = window.location.href;
@@ -1002,6 +1032,12 @@ window.onclick = function (event) {
   document.getElementById("keyWord")
     ? event.target !== document.getElementById("keyWord")
       ? document.getElementById("searchResult").classList.add("d-none")
+      : ""
+    : "";
+
+  document.getElementById("keyWord2")
+    ? event.target !== document.getElementById("keyWord2")
+      ? document.getElementById("searchResult2").classList.add("d-none")
       : ""
     : "";
 };

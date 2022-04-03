@@ -1,5 +1,5 @@
 <header>
-    <div class="header-main-container2">
+    <div class="header-main-container2 lg-header">
         <!-- Begin Header Middle Area -->
         <div class="header-dynamic header-middle2  pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
             <div class="container py-0">
@@ -7,7 +7,7 @@
                     <!-- Begin Header Logo Area -->
                     <div class="col-lg-3">
                         <div class="logo pb-sm-30 pb-xs-30">
-                            <a href="index.php">
+                            `<a href="index.php">
                                 <table>
                                     <tr>
                                         <td> <img src="logo/v2/log.png" style="width: 50px;" alt=""></td>
@@ -16,7 +16,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </a>
+                            </a>`
                         </div>
                     </div>
                     <!-- Header Logo Area End Here -->
@@ -105,5 +105,91 @@
         </div>
 
         <?php include "./includes/nav_bar.php"; ?>
+    </div>
+    <div class="sm-header">
+        <div class="main-container">
+            <div class="mbl-logo-container">
+                <a href="index.php">
+                    <table>
+                        <tr>
+                            <td> <img src="logo/v2/log.png" style="width: 50px;" alt=""></td>
+                            <td>
+                                <h2 class="m-0 text-white" style="font-size: 18px;">Auto Expert Rwanda</h2>
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
+            <div class="cart-container">
+                <a href="cart.php">
+                    <i class="fa fa-shopping-basket"></i>
+                    <div class="badge-container">
+                        <div class="total-counter" id="mobileCartTotal">
+                            <span>0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="user-container">
+                <?php if (isset($_SESSION['username'])) {
+                ?>
+                    <a href="profile.php">
+                        <div class="user-circle">
+                            <?php echo $fname[0] ?>
+                            <?php echo $lname[0] ?>
+                        </div>
+                    </a>
+                <?php } else { ?>
+                    <a href="login_register.php">
+                        <i class="fa fa-user-o"></i>
+                    </a>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+        <div class="sm-search-container">
+            <div style="width: 100%;">
+                <form action="search.php" class="hm-searchbox">
+                    <div class="search-container">
+                        <input type="text" name='q' placeholder="Search by part name or by part number" id="keyWord2" autocomplete="off" value="<?php if (isset($_GET['q'])) {
+                                                                                                                                                    echo $_GET['q'];
+                                                                                                                                                } ?>" required />
+                        <div class="search-result-menu d-none" id="searchResult2">
+                        </div>
+                    </div>
+                    <button class="li-btn" style="z-index: 200;" id="searchBtn2" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="bars-container" onclick="handleMobileMenu()">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+        <div class="sm-menu-container d-none">
+            <ul>
+                <li>
+                    <a href="index.php">
+                        <div>Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="car_renting.php">
+                        <div>Car renting</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="about_us.php">
+                        <div>About Us</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="contact_us.php">
+                        <div>Contact Us</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </header>
