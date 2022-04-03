@@ -5972,6 +5972,22 @@ span.required {
   color: white;
 }
 
+.whatsap-main-container {
+  position: fixed;
+  bottom: 100px;
+  z-index: 2;
+  right: -40px;
+  transition: 1.3s;
+}
+
+.whatsap-main-container.show {
+  right: 25px;
+}
+
+.whatsap-main-container img {
+  width: 40px;
+}
+
 @media (max-width: 768px) {
   .video-container {
     display: none;

@@ -69,6 +69,15 @@ include "fxs.php";
         <?php include "./footer.php"; ?>
     </div>
     <!-- Body Wrapper End Here -->
+
+    <!-- whatsap chatt container -->
+    <div class="whatsap-main-container">
+        <a href="https://wa.me/250780848761" target="_blank">
+            <img src="images/w_logo_2.png" alt="contact us on whatsapp">
+        </a>
+    </div>
+    <!-- whatsap chatt container -->
+
     <!-- jQuery-V1.12.4 -->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <!-- Popper js -->

@@ -7,7 +7,7 @@
                     <!-- Begin Header Logo Area -->
                     <div class="col-lg-3">
                         <div class="logo pb-sm-30 pb-xs-30">
-                            `<a href="index.php">
+                            <a href="index.php">
                                 <table>
                                     <tr>
                                         <td> <img src="logo/v2/log.png" style="width: 50px;" alt=""></td>
@@ -16,7 +16,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </a>`
+                            </a>
                         </div>
                     </div>
                     <!-- Header Logo Area End Here -->

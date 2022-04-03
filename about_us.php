@@ -135,6 +135,15 @@ include "fxs.php";
         </div>
         <!-- team area wrapper end -->
         <?php include "./footer.php"; ?>
+
+        <!-- whatsap chatt container -->
+        <div class="whatsap-main-container">
+            <a href="https://wa.me/250780848761" target="_blank">
+                <img src="images/w_logo_2.png" alt="contact us on whatsapp">
+            </a>
+        </div>
+        <!-- whatsap chatt container -->
+
     </div>
     <!-- Body Wrapper End Here -->
     <!-- jQuery-V1.12.4 -->

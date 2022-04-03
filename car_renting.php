@@ -290,6 +290,14 @@ if (isset($_GET['sort'])) {
         <?php include "footer.php"; ?>
     </div>
 
+    <!-- whatsap chatt container -->
+    <div class="whatsap-main-container">
+        <a href="https://wa.me/250780848761" target="_blank">
+            <img src="images/w_logo_2.png" alt="contact us on whatsapp">
+        </a>
+    </div>
+    <!-- whatsap chatt container -->
+
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script src="js/vendor/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

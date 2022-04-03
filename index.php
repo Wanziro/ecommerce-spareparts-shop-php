@@ -394,6 +394,14 @@ include "fxs.php";
   </div>
   <?php include "footer.php"; ?>
 
+  <!-- whatsap chatt container -->
+  <div class="whatsap-main-container">
+    <a href="https://wa.me/250780848761" target="_blank">
+      <img src="images/w_logo_2.png" alt="contact us on whatsapp">
+    </a>
+  </div>
+  <!-- whatsap chatt container -->
+
   <div class="ldl-mdl d-none" id="ldlMdl">
     <div class="ldl-mdl-contents"><img src="images/loader-double.svg" alt=""></div>
   </div>

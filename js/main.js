@@ -46,6 +46,7 @@ let keyWord2 = $("#keyWord2");
         "header-bottom22"
       );
       $(".sm-header").addClass("bg");
+      $(".whatsap-main-container").addClass("show");
     } else {
       $(".header-dynamic").removeClass("header-middle22");
       $(".header-dynamic").addClass("header-middle2");
@@ -56,6 +57,7 @@ let keyWord2 = $("#keyWord2");
         "header-bottom"
       );
       $(".sm-header").removeClass("bg");
+      $(".whatsap-main-container").removeClass("show");
     }
   });
   /*----------------------------------------*/
