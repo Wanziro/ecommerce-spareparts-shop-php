@@ -3,7 +3,7 @@
 <title>AUTO Experts Rwanda</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" href="logo/logo.jpg" type="image/jpg">
-<meta name="theme-color" content="#4285f4">
+<meta name="theme-color" content="#34515e">
 <meta name="keywords" content="AUTO Experts Rwanda, AUTO Experts, Garages, spare parts, online shopping, car renting in Rwanda, car renting,car shopping">
 <meta name="description" content="AUTO Experts Rwanda is a leading East Africa's Automotive based service provider based in Kigali Rwanda. The company provide services and products to customer level in order to satisfy growing automotive industry in Rwanda and Africa.">
 
