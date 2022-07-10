@@ -169,7 +169,7 @@ if (isset($_POST['getCheckoutList'])) {
                 <tr class="order-total">
                     <th>Total Price</th>
                     <td>
-                        <strong><span class="amount"><?php echo numfmt_format_currency($fmt, $total, "RWF"); ?></span></strong>
+                        <strong><span class="amount"><?php echo number_format($total) . " RWF"; ?></span></strong>
                     </td>
                 </tr>
                 <tr class="order-total">
@@ -181,7 +181,7 @@ if (isset($_POST['getCheckoutList'])) {
                 <tr class="order-total">
                     <th>Order Total</th>
                     <td>
-                        <strong><span class="amount" id="amountString"><?php echo numfmt_format_currency($fmt, $total, "RWF"); ?></span></strong>
+                        <strong><span class="amount" id="amountString"><?php echo number_format($total) . " RWF"; ?></span></strong>
                         <input type="hidden" id="currentPrice" value="<?php echo $total; ?>">
                         <input type="hidden" id="totalAmountToPay" value="<?php echo $total; ?>">
                     </td>
@@ -218,7 +218,7 @@ if (isset($_POST['miniCartNotifications'])) {
     }
     echo "$totalItmes&";
     if ($totalItmes > 0) {
-        echo numfmt_format_currency($fmt, $total, "RWF");
+        echo number_format($total) . " RWF";
     } else {
         echo $total;
     }
@@ -270,7 +270,7 @@ if (isset($_POST['cartOnPage'])) {
                                 </a>
                             </td>
                             <td class="li-product-price">
-                                <span class="amount"><?php echo numfmt_format_currency($fmt, get_spare_part_price($product_id), "RWF"); ?></span>
+                                <span class="amount"><?php echo number_format(get_spare_part_price($product_id)) . " RWF"; ?></span>
                             </td>
                             <td class="quantity">
                                 <label>Quantity</label>
@@ -285,7 +285,7 @@ if (isset($_POST['cartOnPage'])) {
                                 </div>
                             </td>
                             <td class="product-subtotal">
-                                <span class="amount"><?php echo numfmt_format_currency($fmt, $current_total, "RWF"); ?></span>
+                                <span class="amount"><?php echo number_format($current_total) . " RWF"; ?></span>
                             </td>
                         </tr>
                     <?php
@@ -299,8 +299,8 @@ if (isset($_POST['cartOnPage'])) {
                 <div class="cart-page-total">
                     <h2>Cart totals</h2>
                     <ul>
-                        <li>Subtotal <span><?php echo numfmt_format_currency($fmt, $total, "RWF"); ?></span></li>
-                        <li>Total <span><?php echo numfmt_format_currency($fmt, $total, "RWF"); ?></span></li>
+                        <li>Subtotal <span><?php echo number_format($total) . " RWF"; ?></span></li>
+                        <li>Total <span><?php echo number_format($total) . " RWF"; ?></span></li>
                     </ul>
                     <a href="checkout.php">Proceed to checkout</a>
                 </div>

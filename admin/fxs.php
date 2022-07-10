@@ -311,7 +311,7 @@ function get_total_stock()
             $amount += $row['quantity'] * $row['price'];
         }
     }
-    echo numfmt_format_currency($fmt, $amount, "RWF");
+    echo number_format($amount) . " RWF";
 }
 function get_number_of_items_in_cart()
 {
@@ -337,7 +337,7 @@ function get_total_sold_amount()
             $amount += $row['amount'];
         }
     }
-    echo numfmt_format_currency($fmt, $amount, "RWF");
+    echo number_format($amount) . " RWF";
 }
 function check_image_format($img)
 {

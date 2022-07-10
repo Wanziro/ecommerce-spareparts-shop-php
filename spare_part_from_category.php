@@ -110,7 +110,7 @@ function get_spare_parts($category, $item, $filter, $s_id = 'xx')
           <div class="add-to-cart-container">
             <h2 class="bg-dark text-white text-center">Add To Cart</h2>
             <span>Sale</span>
-            <h2 class="dark-text"><?php echo numfmt_format_currency($fmt, $price, "RWF"); ?></h2>
+            <h2 class="dark-text"><?php echo number_format($price) . " RWF"; ?></h2>
             <?php
             if ($quantity > 0) {
             ?>

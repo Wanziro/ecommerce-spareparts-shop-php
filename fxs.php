@@ -82,7 +82,7 @@ function get_start_here_spare_parts($vehicle, $vehicleMark, $vehicleModel, $vehi
                     <div class="add-to-cart-container">
                         <h2 class="bg-dark text-white text-center">Add To Cart</h2>
                         <span>Sale</span>
-                        <h2 class="dark-text"><?php echo numfmt_format_currency($fmt, $price, "RWF"); ?></h2>
+                        <h2 class="dark-text"><?php echo number_format($price) . " RWF"; ?></h2>
                         <?php
                         if ($quantity > 0) {
                         ?>
@@ -460,7 +460,7 @@ function vehicle_trendings($vehicle)
                                                 </h4>
                                                 <div class="price-box">
                                                     <span>PRICE</span>
-                                                    <span class="new-price new-price-2"> <?php echo numfmt_format_currency($fmt, $price, "RWF"); ?></span>
+                                                    <span class="new-price new-price-2"> <?php echo number_format($price) . " RWF"; ?></span>
                                                 </div>
                                             </div>
                                             <div class="add-actions">
